@@ -1,14 +1,19 @@
 <?php
 
-if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+if (!defined('BASEPATH'))
+    exit('No direct script access allowed');
 
 
-$icon_text = intval($this->binu->font_size * 1.3);
+$icon_text = intval($this->binu->font_size * 0.9);
+$icon_link = intval($this->binu->font_size * 0.9);
 
 // hack, HD displays result in icons that are
 // too large to be drawn
-if ( $icon_text > 60 ) {
-  $icon_text = 60;
+if ($icon_text > 60) {
+    $icon_text = 60;
+}
+if ($icon_link > 30) {
+    $icon_link = 30;
 }
 
 echo <<<EOT
@@ -31,7 +36,11 @@ echo <<<EOT
   </style>
   <style name="icon_link">
     <color value="#0000FF"/>
-    <font face="Symbola" size="$icon_text"/>
+    <font face="Symbola" size="$icon_link"/>
+  </style>
+   <style name="error_text">
+    <color value="#FF0000"/>
+    <font face="Arial Unicode MS" size="$icon_text"/>
   </style>
   <style name="footer_text">
     <color value="#FF000000"/>
