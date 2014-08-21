@@ -1,18 +1,16 @@
 <?php
+include("button_template.php");
 
-/**
- * A basic page with a text
- */
+function iterate_button_list($arguments) {
+    $bullet = html_entity_decode('&#x2719;', ENT_COMPAT, 'UTF-8');
+    $button_names = array('Customers', 'Agents', 'Merchants');
+    $generated_list = '';
+    foreach ($button_names as $button_name) {
 
-if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+        $generated_list .= display_button($button_name, $arguments);
+    }
+    return $generated_list;
+}
+//1F449
 
-$text = ! empty($data) ? $data : 'no text';
-
-echo 
-'<pageSegment x="0" y="y" translate="y">
-  <panning>
-   <text x="' . $this->binu->indent . '" y="0" style="body_text" mode="wrap">' . htmlspecialchars($text) . '</text>
-  </panning>
-</pageSegment>
-';
-
+?>

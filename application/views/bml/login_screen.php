@@ -120,13 +120,20 @@ $full_height = $this->binu->phone_caps["screen_height"];
 $full_width = $this->binu->phone_caps["screen_width"];
 $image_location = $this->config->item('img_dir');
 $tab_space = $this->binu->indent * 10;
-
+$input_field_width = $this->binu->phone_caps["screen_width"] - ($this->binu->indent * 2);
+$button_space = $this->binu->indent;
+$button_width = ($input_field_width / 2 ) - $button_space;
+$button_height = $this->binu->indent * 15;
+$input_field_height = $button_height;
+$x_pos_nextbutton = $button_space * 2;
 
 $nav_url = $this->config->item('nav_url');
 
 $signin_text = 'Sign In';
-$cancel_text = 'Help';
+$help_text = 'Help';
 $reveal_pswd = 'Toggle display password';
+$bullet_signin = html_entity_decode('&#x1F512;', ENT_COMPAT, 'UTF-8');
+$bullet_help = html_entity_decode('&#x2754;', ENT_COMPAT, 'UTF-8');
 $bullet1 = html_entity_decode('&#x2730;', ENT_COMPAT, 'UTF-8');
 $bullet = html_entity_decode('&#x2611;', ENT_COMPAT, 'UTF-8');
 $bullet2 = html_entity_decode('&#x00BB;', ENT_COMPAT, 'UTF-8');
@@ -154,35 +161,38 @@ echo
   </fixed>
     </pageSegment>
     
+    
  <pageSegment x="0" y="0" translate="y">
   <panning>
- <rectangle x="' . $this->binu->indent . '" y="' . ($tab_space) . '" w="width" h="' . $this->binu->line_height . '" style="white_field" border="2">
+ <rectangle radius="5" x="' . $this->binu->indent . '" y="' . ($tab_space) . '" w="' . $input_field_width . '" h="' . $input_field_height . '" style="white_field" border="2">
      </rectangle>
  <mark name="username_location" y="y"/>
- <rectangle x="' . $this->binu->indent . '" y="username_location +' . $this->binu->indent . '" w="width" h="' . $this->binu->line_height . '" style="white_field" border="2">
+ <rectangle radius="5" x="' . $this->binu->indent . '" y="username_location +' . $this->binu->indent . '" w="' . $input_field_width . '" h="' . $input_field_height . '" style="white_field" border="2">
         </rectangle>
         <mark name="pswd_entryfield_locationx" x="x"/>
  <mark name="button_location" y="y"/>
- <rectangle x="' . (0.2 * $full_width) . '" y="button_location +' . $tab_space . '" w="' . (0.25 * $full_width) . '" h="' . ($this->binu->line_height * 1.5) . '" style="white_field" border="2"></rectangle>
+ <rectangle radius="5" x="' . $this->binu->indent . '" y="button_location +' . $tab_space . '" w="' . $button_width . '" h="' . $button_height . '" style="buttons" border="2"></rectangle>
  <mark name="first_button_locationx" x="x"/>
- <rectangle x="x + ' . (0.1 * $full_width) . '" y="button_location +' . $tab_space . '" w="' . (0.25 * $full_width) . '" h="' . ($this->binu->line_height * 1.5) . '" style="white_field" border="2"> </rectangle>
- <text x="' . ($this->binu->indent * 2) . '" y="' . ($tab_space + $this->binu->indent) . '" style="body_text" mode="wrap">' . htmlspecialchars($username_placeholder) . '</text>
-  <text x="' . ($this->binu->indent * 2) . '" y="username_location +' . ($this->binu->indent) . '" style="body_text" mode="wrap">' . htmlspecialchars($password_placeholder) . '</text>
+ <rectangle radius="5" x="first_button_locationx + ' . $x_pos_nextbutton . '" y="button_location +' . $tab_space . '" w="' . $button_width . '" h="' . $button_height . '" style="buttons" border="2"> </rectangle>
+ <text x="' . ($this->binu->indent * 2) . '" y="' . ($tab_space + ($button_height * 0.25)) . '" style="inner_text" mode="wrap">' . htmlspecialchars($username_placeholder) . '</text>
+  <text x="' . ($this->binu->indent * 2) . '" y="username_location +' .  + ($button_height * 0.25) . '" style="inner_text" mode="wrap">' . htmlspecialchars($password_placeholder) . '</text>
  
      
-<text x="0" y="username_location +' . $tab_space . '" style="icon_text" mode="wrap">' . $bullet . '</text>
-<text x="textx" y="username_location +' . $tab_space . '" style="icon_link" mode="wrap">' . $reveal_pswd . '</text>
+<text x="' . $this->binu->indent . '" y="username_location +' . ($input_field_height + ($this->binu->indent * 2)) . '" style="icon_text" mode="wrap">' . $bullet . '</text>
+<text x="textx" y="username_location +' . ($input_field_height + ($this->binu->indent * 2) ) . '" style="icon_link" mode="wrap">' . $reveal_pswd . '</text>
   
-<text align="center" w="' . (0.25 * $full_width) . '" x="' . (0.2 * $full_width) . '" y="button_location +' . ($tab_space * 1.25) . '" style="body_text" mode="wrap">' . htmlspecialchars($signin_text) . '</text>
- <text align="center" w="' . (0.25 * $full_width) . '" x="' . (0.55 * $full_width) . '"  y="button_location +' . ($tab_space * 1.25) . '" style="body_text" mode="wrap">' . htmlspecialchars($cancel_text) . '</text>
+<text align="center" w="' . (0.25 * $full_width) . '" x="' . (0.25 * $button_width) . '" y="button_location +' . ($tab_space + ($button_height * 0.25)) . '" style="body_text" mode="wrap">' . htmlspecialchars($signin_text) . '</text>
+ <text align="center" w="' . (0.25 * $full_width) . '" x="first_button_locationx +' . ((0.25 * $button_width) + $x_pos_nextbutton) . '"  y="button_location +' . ($tab_space + ($button_height * 0.25)) . '" style="body_text" mode="wrap">' . htmlspecialchars($help_text) . '</text>
 
 <text x="0" y="button_location +' . ($tab_space * 2.5) . '" style="error_text" mode="wrap">' . $error_msg . '</text>
 
-<link icon="n" x="' . $this->binu->indent . '" y="' . ($tab_space) . '" w="width" h="' . $this->binu->line_height . '" actionType="page" url="' . $nav_url . 'username_screen/"/>
-  <link icon="n" x="' . $this->binu->indent . '" y="username_location +' . $this->binu->indent . '" w="width" h="' . $this->binu->line_height . '" actionType="page" url="' . $nav_url . 'password_screen/"/>
-<link icon="n" x="' . (0.2 * $full_width) . '" y="button_location +' . $tab_space . '" w="' . (0.25 * $full_width) . '" h="' . ($this->binu->line_height * 1.5) . '" actionType="page" url="' . $nav_url . 'sign_in/"/>
-  <link icon="n" x="first_button_locationx + ' . (0.1 * $full_width) . '" y="button_location +' . $tab_space . '" w="' . (0.25 * $full_width) . '" h="' . ($this->binu->line_height * 1.5) . '" actionType="page" url="' . $nav_url . 'help_page/"/>
- <link icon="n" x="0" y="username_location +' . $tab_space . '" w="width" h="' . $this->binu->line_height . '" spider="N" actionType="page" url="' . $nav_url . 'togglepassword/"/>
+<link icon="n" x="' . $this->binu->indent . '" y="' . ($tab_space) . '" w="' . $input_field_width . '" h="' . $input_field_height . '" actionType="page" url="' . $nav_url . 'username_screen/"/>
+  <link icon="n" x="' . $this->binu->indent . '" y="username_location +' . $this->binu->indent . '" w="' . $input_field_width . '" h="' . $input_field_height . '" actionType="page" url="' . $nav_url . 'password_screen/"/>
+<link icon="n" x="' . $this->binu->indent . '" y="button_location +' . $tab_space . '" w="' . $button_width . '" h="' . $button_height . '" actionType="page" url="' . $nav_url . 'sign_in/"/>
+  
+<link icon="n" x="first_button_locationx + ' . $x_pos_nextbutton . '" y="button_location +' . $tab_space . '" w="' . $button_width . '" h="' . $button_height . '" actionType="page" url="' . $nav_url . 'help_page/"/>
+ 
+<link icon="n" x="' . $this->binu->indent . '" y="username_location +' . ($input_field_height + ($this->binu->indent * 2)) . '" w="width" h="' . $this->binu->line_height . '" spider="N" actionType="page" url="' . $nav_url . 'togglepassword/"/>
  </panning>
 </pageSegment>
 ';

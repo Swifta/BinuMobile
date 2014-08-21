@@ -41,6 +41,39 @@ class Nav extends CI_Controller {
         $this->load->view('bml/template', $this->bml_page);
     }
 
+    public function faqanswers() {
+        $back_url = 'customers';
+        // extract($_GET);
+        $get_params = array();
+//log_message('info','The title is ======================='.$title);
+        if (isset($_GET['title'])) {
+            array_push($get_params, $_GET['title']);
+            log_message('info', 'There is a title on the page......');
+        } else {
+            array_push($get_params, 'N/A');
+        }
+        if (isset($_GET['answer'])) {
+            array_push($get_params, $_GET['answer']);
+            log_message('info', 'There is an answer to the question');
+        } else {
+            array_push($get_params, 'N/A');
+        }
+
+        //         log_message('info','The title is '.$title);
+        $this->load->model('app_list_model');
+
+        $this->bml_page->set_ttl(1);
+        log_message('info', 'Inside the faq answers in NAV=========================');
+
+        $text = 'FAQ Answer';
+        $this->bml_page->set_backurl($back_url);
+        $this->bml_page->set_title($text);
+        $this->bml_page->set_view('faqanswers');
+        $this->bml_page->set_data($get_params);
+
+        $this->load->view('bml/template', $this->bml_page);
+    }
+
     function togglepassword() {
         log_message('info', '===============TOGGLE PASSWORD NOW!!!!!');
         if ($this->session->userdata('togglepswd') !== FALSE) {
@@ -128,7 +161,7 @@ class Nav extends CI_Controller {
             'mode' => 'text',
             'maxlength' => 100,
         );
-        
+
 
         $this->bml_form->set_title('Enter Password');
         $this->bml_form->set_ttl(1);
@@ -166,30 +199,19 @@ class Nav extends CI_Controller {
             $this->index();
         } else {
             log_message('info', 'Username and password exists');
-           /* $fields = array(
-                "username" => urlencode($username),
-                "password" => urlencode($password),
-            );*/
+            /* $fields = array(
+              "username" => urlencode($username),
+              "password" => urlencode($password),
+              ); */
             $fields = array(
                 "username" => $username,
                 "password" => $password,
             );
-            if ($this->psaconnector->authenticate_details($fields)) {
-            //if($username == 'kachi'){
-                
-                log_message('info', 'Insise the method if the fields authenticates');
-                $text = 'List services here!';
+            //   $result = $this->psaconnector->authenticate_details($fields);
+            // if ($result) {
+            if ($username == 'kachi') {
 
-                $this->bml_page->set_ttl(1);
-
-
-
-                $this->bml_form->set_title('MATS Services');
-
-                $this->bml_page->set_view('home_page');
-                $this->bml_page->set_data($text);
-
-                $this->load->view('bml/template', $this->bml_page);
+                $this->home_page();
             } else {
                 $status_msg = 'Invalid Username / Password';
                 log_message('info', 'Before setting the cookie to message<<<<<>>>>>=====' . $status_msg);
@@ -209,8 +231,189 @@ class Nav extends CI_Controller {
         $this->bml_page->set_ttl(1);
 
         $text = 'Help Page Display';
-        $this->bml_form->set_title('FAQs');
+        $this->bml_page->set_title('FAQs');
         $this->bml_page->set_view('help_screen');
+        $this->bml_page->set_data($text);
+
+        $this->load->view('bml/template', $this->bml_page);
+    }
+
+    public function home_page() {
+
+        log_message('info', 'Insise the method if the fields authenticates');
+        $text = 'List services here!';
+
+        $this->bml_page->set_ttl(1);
+
+        $back_url = '';
+
+        $this->bml_page->set_title('Choose a MATS Service');
+
+        $this->bml_page->set_view('home_page');
+        $this->bml_page->set_data($text);
+
+        $this->load->view('bml/template', $this->bml_page);
+    }
+
+    public function cash_in() {
+        $back_url = 'home_page';
+        $params = array(array(
+                'name' => 'MSISDN / Wallet Number',
+                'value' => '',
+                'fullscreen' => 'false',
+                'hidevalue' => 'false',
+                'manditory' => 'true',
+                'predictivetext' => 'allow',
+                'mode' => 'numeric',
+                'maxlength' => 20,
+            ), array('name' => 'Amount',
+                'value' => '',
+                'fullscreen' => 'false',
+                'hidevalue' => 'false',
+                'manditory' => 'true',
+                'predictivetext' => 'allow',
+                'mode' => 'numeric',
+                'maxlength' => 20,
+            ), array('name' => 'PIN',
+                'value' => '',
+                'fullscreen' => 'false',
+                'hidevalue' => 'false',
+                'manditory' => 'true',
+                'predictivetext' => 'allow',
+                'mode' => 'numeric',
+                'maxlength' => 9,));
+
+
+        $this->bml_form->set_title('Cash In');
+        $this->bml_form->set_ttl(1);
+        $this->bml_form->set_action_url($this->config->item('app_home'));
+        foreach ($params as $fields) {
+            $this->bml_form->add_field($fields);
+        }
+        $this->load->view('bml/form_template', $this->bml_form);
+    }
+
+    public function cash_out() {
+        $back_url = 'home_page';
+        $this->load->model('app_list_model');
+
+        $this->bml_page->set_ttl(1);
+
+        $text = 'Cash Out';
+        $this->bml_page->set_title('Cash Out');
+        $this->bml_page->set_view('cash_out');
+        $this->bml_page->set_data($text);
+
+        $this->load->view('bml/template', $this->bml_page);
+    }
+
+    public function merchant_payment() {
+        $back_url = 'home_page';
+        $this->load->model('app_list_model');
+
+        $this->bml_page->set_ttl(1);
+
+        $text = 'Merchant Payment';
+        $this->bml_page->set_title('FAQs');
+        $this->bml_page->set_view('merchant_payment');
+        $this->bml_page->set_data($text);
+
+        $this->load->view('bml/template', $this->bml_page);
+    }
+
+    public function bill_payment() {
+        $back_url = 'home_page';
+        $this->load->model('app_list_model');
+
+        $this->bml_page->set_ttl(1);
+
+        $text = 'Bill Payment';
+        $this->bml_page->set_title('Bill Payment');
+        $this->bml_page->set_view('bill_payment');
+        $this->bml_page->set_data($text);
+
+        $this->load->view('bml/template', $this->bml_page);
+    }
+
+    public function float_transfer() {
+        $back_url = 'home_page';
+        $this->load->model('app_list_model');
+
+        $this->bml_page->set_ttl(1);
+
+        $text = 'Float Transfer';
+        $this->bml_page->set_title('FAQs');
+        $this->bml_page->set_view('float_transfer');
+        $this->bml_page->set_data($text);
+
+        $this->load->view('bml/template', $this->bml_page);
+    }
+
+    public function sell_airtime() {
+        $back_url = 'home_page';
+        $this->load->model('app_list_model');
+
+        $this->bml_page->set_ttl(1);
+
+        $text = 'Sell Airtime';
+        $this->bml_page->set_title('Sell Airtime');
+        $this->bml_page->set_view('sell_airtime');
+        $this->bml_page->set_data($text);
+
+        $this->load->view('bml/template', $this->bml_page);
+    }
+
+    public function my_account() {
+        $back_url = 'home_page';
+        $this->load->model('app_list_model');
+
+        $this->bml_page->set_ttl(1);
+
+        $text = 'My Account';
+        $this->bml_page->set_title('My Account');
+        $this->bml_page->set_view('my_account');
+        $this->bml_page->set_data($text);
+
+        $this->load->view('bml/template', $this->bml_page);
+    }
+
+    public function customers() {
+        $back_url = 'help_page';
+        $this->load->model('app_list_model');
+
+        $this->bml_page->set_ttl(1);
+
+        $text = 'Customers FAQ';
+        $this->bml_page->set_title('Customers FAQ');
+        $this->bml_page->set_view('customers');
+        $this->bml_page->set_data($text);
+
+        $this->load->view('bml/template', $this->bml_page);
+    }
+
+    public function merchants() {
+        $back_url = 'help_page';
+        $this->load->model('app_list_model');
+
+        $this->bml_page->set_ttl(1);
+
+        $text = 'Merchants FAQ';
+        $this->bml_page->set_title('Merchants FAQ');
+        $this->bml_page->set_view('merchants');
+        $this->bml_page->set_data($text);
+
+        $this->load->view('bml/template', $this->bml_page);
+    }
+
+    public function agents() {
+        $back_url = 'help_page';
+        $this->load->model('app_list_model');
+
+        $this->bml_page->set_ttl(1);
+
+        $text = 'Agents FAQ';
+        $this->bml_page->set_title('Agents FAQ');
+        $this->bml_page->set_view('agents');
         $this->bml_page->set_data($text);
 
         $this->load->view('bml/template', $this->bml_page);

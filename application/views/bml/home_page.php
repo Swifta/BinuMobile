@@ -1,18 +1,14 @@
 <?php
+include("button_template.php");
 
-/**
- * A basic page with a text
- */
+function iterate_button_list($arguments) {
+    $button_names = array('Cash In', 'Cash Out', 'Merchant Payment', 'Bill Payment', 'Float Transfer', 'Sell Airtime', 'My Account');
+    $generated_list = '';
+    foreach ($button_names as $button_name) {
 
-if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+        $generated_list .= display_button($button_name, $arguments);
+    }
+    return $generated_list;
+}
 
-$text = ! empty($data) ? $data : 'no text';
-
-echo 
-'<pageSegment x="0" y="y" translate="y">
-  <panning>
-   <text x="' . $this->binu->indent . '" y="0" style="body_text" mode="wrap">' . htmlspecialchars($text) . '</text>
-  </panning>
-</pageSegment>
-';
-
+?>
