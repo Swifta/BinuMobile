@@ -4,7 +4,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 $is_form = ! empty($is_form) ? $is_form : 0;
 $actions = ! empty($actions) ? $actions : '';
-$data = array($backurl);
+$data = array($backurl,$homeurl);
 //error_log(__FILE__ . ':' . __LINE__ . ' ' . print_r($actions,1));
 //error_log(__FILE__ . ':' . __LINE__ . ' ' . print_r($is_form,1));
 

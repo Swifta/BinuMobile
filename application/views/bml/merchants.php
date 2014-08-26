@@ -23,6 +23,7 @@ o	PAY BILLS: Pay bills for PAY services, electricity, water, and DSTV.',
            'Buy airtime, pay Tv subscriptions, power and water utilities, Receive and transfer money locally, receive international remittances 
                in local currencies, conduct basic financial services.');
 $generated_list = '';
+$arguments['backurl']='merchants';
     foreach ($button_names as $button_name) {
 $faq_answer = $faq_answers[array_search($button_name, $button_names)];
         log_message('info',$faq_answer);

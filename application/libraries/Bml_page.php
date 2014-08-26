@@ -12,6 +12,7 @@ class Bml_page {
     const DEFAULT_TITLE = 'Title';
     const DEFAULT_VIEW = 'view_not_set';
     const DEFAULT_BACKURL = 'index';
+    const DEFAULT_HOMEURL = 'index';
 
     // the ttl of this page
     public $ttl;
@@ -31,6 +32,7 @@ class Bml_page {
         $this->page_meta = new stdClass();
         $this->page_meta->title = !empty($params['title']) ? $params['title'] : self::DEFAULT_TITLE;
         $this->page_meta->backurl = !empty($params['backurl']) ? $params['backurl'] : self::DEFAULT_BACKURL;
+        $this->page_meta->homeurl = !empty($params['homeurl']) ? $params['homeurl'] : self::DEFAULT_HOMEURL;
     }
 
     /**
@@ -43,10 +45,18 @@ class Bml_page {
 
     /**
      * Set the page back url
-     * @param string $back_url The page title
+     * @param string $back_url The page back url
      */
     public function set_backurl($backurl) {
         $this->page_meta->backurl = $backurl;
+    }
+
+    /**
+     * Set the page home url
+     * @param string $homeurl The page home url
+     */
+    public function set_homeurl($homeurl) {
+        $this->page_meta->homeurl = $homeurl;
     }
 
     /**

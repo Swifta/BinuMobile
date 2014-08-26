@@ -2,8 +2,9 @@
 <?php
 include("list_template.php");
 
+
 function iterate_button_list($arguments) {
-    $button_names = array('What services can I conduct as MATS agent outlets', 'How does mobile money work', 'How do I know the agents locations','Am I limited to conduct transactions at agent outlet where I registered initially lkjklgkhfhj gh;lhhgfjgdgfdg hkfjhkjhggdsdfhf jjkhlkjhfgdgdhgu i;klgfhgfdhgkj o;iui;kuf dghkjl','How do I know the fees charges for transactions','Registrations','What services can I conduct at a MATS Agent outlet');
+    $button_names = array('What services can I conduct as MATS agent outlets', 'How does mobile money work', 'How do I know the agents locations','Am I limited to conduct transactions at agent outlet where I registered initially','How do I know the fees charges for transactions','Registrations','What services can I conduct at a MATS Agent outlet');
     $generated_list = '';
    $faq_answers = array('o	CASH IN: Deposit money into your MOBILEMONEY account through MATS agents network.
 o	SEND MONEY: Send money to any one in Nigeria using your card or cash at agent locations nationwide.
@@ -23,6 +24,7 @@ o	PAY BILLS: Pay bills for PAY services, electricity, water, and DSTV.',
            'Users can register for any of our partner’s mobilemoney account, agency banking and other services at the MATS outlets nationwide.',
            'Buy airtime, pay Tv subscriptions, power and water utilities, Receive and transfer money locally, receive international remittances 
                in local currencies, conduct basic financial services.');
+   $arguments['backurl']='agents';
     foreach ($button_names as $button_name) {
         $faq_answer = $faq_answers[array_search($button_name, $button_names)];
         log_message('info',$faq_answer);

@@ -6,6 +6,7 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
  * Custom settings / config specific to this app
  *
  * @author <joe.lipson@binu-inc.com>
+ * 
  */
 
 // the name of the site
@@ -23,7 +24,9 @@ $config['img_dir'] =  'http://www.swifta.co/binutraining/matsapp/assets/images/'
 $config['nav_url'] =  'http://www.swifta.co/binutraining/matsapp/index.php/nav/';
 $config['app_home'] =  'http://www.swifta.co/binutraining/matsapp/';
 
+
 $config['top_bar_color'] =  '#1A6DA8';
+
 $config['top_bar_text_color'] =  '#FFFFFF';
 $config['home_page_bg'] =  '#5BBBFF';
 

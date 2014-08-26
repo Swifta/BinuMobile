@@ -29,3 +29,4 @@ EOT;
 
 //file_put_contents('/tmp/dim.xml', $buff);
 echo $buff;
+log_message('info','The full page is........'.$buff);

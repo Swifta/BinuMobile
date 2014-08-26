@@ -8,10 +8,10 @@
  *
  * @author <joe.lipson@binu-inc.com>
  */
+if (!defined('BASEPATH'))
+    exit('No direct script access allowed');
 
-if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
-$body            = $this->load->view('bml/form', $page_meta, true);
+$body = $this->load->view('bml/form', $page_meta, true);
 
 $action_url = htmlspecialchars($action_url);
 
@@ -33,3 +33,4 @@ EOT;
 
 file_put_contents('/tmp/form.xml', $buff);
 echo $buff;
+log_message('info', 'The Form::::::::' . $buff);
