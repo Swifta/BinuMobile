@@ -19,7 +19,28 @@ $button_width = $this->binu->phone_caps["screen_width"] - ($line_height * 2);
 $listline_height = 1;
 
 $nav_url = $this->config->item('nav_url');
-$arguments = array('list_height' => $list_height, 'line_height' => $line_height, 'listline_height' => $listline_height, 'binu_indent' => $binu_indent, 'line_height' => $line_height, 'tab_space' => $tab_space, 'nav_url' => $nav_url, 'full_width' => $full_width, 'button_width' => $button_width,'next_page'=>$nextpage[0]);
+$optionid = '';
+$optionname = '';
+if (array_key_exists('1', $nextpage)) {
+    $optionid = $nextpage[1];
+}
+if (array_key_exists('2', $nextpage)) {
+    $optionname = $nextpage[2];
+}
+log_message('info', 'THE OPTION AND THE OPTION NAME ARE ^^^^^^^^^^^^^^^^^*************########################' . $optionid . '<<<<>>>>>' . $optionname);
+$arguments = array('list_height' => $list_height,
+    'line_height' => $line_height,
+    'listline_height' => $listline_height,
+    'binu_indent' => $binu_indent,
+    'line_height' => $line_height,
+    'tab_space' => $tab_space,
+    'nav_url' => $nav_url,
+    'full_width' => $full_width,
+    'button_width' => $button_width,
+    'optionid' => $optionid,
+    'optionname' => $optionname,
+    'next_page' => $nextpage[0]
+);
 
 echo
 '<pageSegment x="0" y="y" translate="y">
@@ -28,7 +49,6 @@ echo
  '</panning>
 </pageSegment>
 ';
-
 
 function display_button($button_name, $arguments, $misc_param) {
     // $faq_answer="Hello are you there?";
@@ -43,9 +63,16 @@ function display_button($button_name, $arguments, $misc_param) {
     $next_page = $arguments['next_page'];
     $listline_height = $arguments['listline_height'];
     $backurl = $arguments['backurl'];
+    $optionid = $arguments['optionid'];
+    $optionname = $arguments['optionname'];
+
     log_message('info', 'The name of the list button is ' . $button_name);
     if (array_key_exists('mmoperator', $arguments)) {
-        $destination_url = htmlspecialchars($nav_url . $next_page . '?mmoperatorid=' . urlencode($misc_param) . '&mmoperatorname=' . urlencode($button_name) . '&backurl=' . urlencode($backurl));
+        $destination_url = htmlspecialchars($nav_url . $next_page . '?mmoperatorid=' . urlencode($misc_param) . '&mmoperatorname=' . urlencode($button_name) . '&optionid=' . urlencode($optionid) . '&optionname=' . urlencode($optionname) . '&backurl=' . urlencode($backurl));
+        $list_name = $button_name;
+    } elseif (array_key_exists('others', $arguments)) {
+        $next_destination_url = $arguments['next_destinationurl'];
+        $destination_url = htmlspecialchars($nav_url . $next_page . '?optionid=' . urlencode($misc_param) . '&destination_url=' . $next_destination_url . '&optionname=' . urlencode($button_name) . '&backurl=' . urlencode($backurl));
         $list_name = $button_name;
     } else {
         $destination_url = htmlspecialchars($nav_url . 'faqanswers?title=' . urlencode($button_name) . '&answer=' . urlencode($misc_param) . '&backurl=' . urlencode($backurl));

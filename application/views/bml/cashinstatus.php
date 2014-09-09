@@ -21,7 +21,9 @@ function status_page($arguments) {
 
         log_message('info', 'There are components inside the said parameter......JOKE NOT!!!');
         if ($status == 'true') {
-            $text = 'Payment of ' . $bullet_naira . ' ' . number_format($amount, 2, '.', ',') . ' was successfully made and the '.$mmoperatorname.' ewallet credited.';
+            $text = 'Payment of ' . $bullet_naira . ' ' . number_format($amount, 2, '.', ',') . ' was successfully made and the '.$mmoperatorname.' ewallet credited.
+                
+'.$status_msg;
         } else {
             $text = 'Transaction Failed.
                 

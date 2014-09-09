@@ -4,7 +4,7 @@ include("list_template.php");
 
 function iterate_button_list($arguments) {
     $button_names = array('ReadyCash', 'PAGA', 'PocketMoni','FETS','Fortis','ClickNpay','VTN','Teasy Mobile');
-    $ids = array('1','2','3','4','5','6','7','8');
+    $ids = array('1','2','pocketmoney','4','5','6','7','teasymobile');
     $generated_list = '';
     $arguments['mmoperator']='true';
     

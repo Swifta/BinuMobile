@@ -4,7 +4,7 @@
  * A basic page with a text
  */
 $arguments = array();
-$arguments['get_params'] = !empty($data) ? $data : array('N/A', '0', 'N/A', 'N/A','N/A');
+$arguments['get_params'] = !empty($data) ? $data : array('N/A', '0', 'N/A', 'N/A', 'N/A');
 include("confirmation_template.php");
 
 function confirmation_page($arguments) {
@@ -16,8 +16,10 @@ function confirmation_page($arguments) {
     if (!empty($errors)) {
         $ref_code = $get_params[0];
         $amount = $get_params[1];
-        $mmoperator = $get_params[3];
-        $mmoperatorname = $get_params[4];
+        $pin = $get_params[2];
+        $reference_info = $get_params[3];
+        $mmoperator = $get_params[4];
+        $mmoperatorname = $get_params[5];
         $fees = '0';
         $total = intval($fees) + intval($amount);
 
@@ -32,7 +34,10 @@ Fees : ' . $bullet_naira . ' ' . number_format($fees, 2, '.', ',') . '
 Total : ' . $bullet_naira . ' ' . number_format($total, 2, '.', ',');
 
         $arguments['cancel_url'] = 'cash_out/';
-        $arguments['confirm_url'] = 'cashoutstatus?refcode=' . urlencode($ref_code) . '&mmoperatorid=' . urlencode($mmoperator). '&mmoperatorname=' . urlencode($mmoperatorname) . '&amount=' . urlencode($amount);
+
+
+        $arguments['confirm_url'] = 'cashoutstatus?refcode=' . urlencode($ref_code) . '&pin=' . urlencode($pin) . '&reference=' . urlencode($reference_info) . '&mmoperatorid=' . urlencode($mmoperator) . '&mmoperatorname=' . urlencode($mmoperatorname) . '&amount=' . urlencode($amount);
+
 
 
         $generated_page = display_text($arguments);
