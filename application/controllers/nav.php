@@ -26,7 +26,7 @@ class Nav extends CI_Controller {
     }
 
     public function faqanswers() {
-        include "nav/help/faqanswers.php";
+        include "nav/help/faqanswers_nav.php";
     }
 
     function togglepassword() {
@@ -46,7 +46,7 @@ class Nav extends CI_Controller {
     }
 
     public function sign_in() {
-        include "nav/home/sigin_nav.php";
+        include "nav/home/signin_nav.php";
     }
 
     public function help_page() {
@@ -124,114 +124,90 @@ class Nav extends CI_Controller {
     public function pay_bill() {
         include "nav/bills/paybill_nav.php";
     }
-     public function billconfirmation() {
+
+    public function billconfirmation() {
         include "nav/bills/billconfirmation_nav.php";
     }
+
     public function billstatus() {
         include "nav/bills/billstatus_nav.php";
     }
 
+    /*
+     * This section is for managing all the page / flows for float transfer 
+     * * */
+
     public function float_transfer() {
-        $back_url = 'home_page';
-        $home_url = 'home_page';
-        $this->load->model('app_list_model');
+        include "nav/floattransfer/float_nav.php";
+    }
 
-        $this->bml_page->set_ttl(1);
+    public function capturefloat() {
+        include "nav/floattransfer/capturefloat_nav.php";
+    }
 
-        $text = 'Float Transfer';
-        $this->bml_page->set_homeurl($home_url);
-        $this->bml_page->set_backurl($back_url);
-        $this->bml_page->set_title('Float Transfer');
-        $this->bml_page->set_view('float_transfer');
-        $this->bml_page->set_data($text);
+    public function floatconfirmation() {
+        include "nav/floattransfer/floatconfirmation_nav.php";
+    }
 
-        $this->load->view('bml/template', $this->bml_page);
+    public function floatstatus() {
+        include "nav/floattransfer/floatstatus_nav.php";
+    }
+
+    /*
+     * This section is for managing all the page / flows for my account 
+     * * */
+
+    public function my_account() {
+        include "nav/myaccount/myaccount_nav.php";
+    }
+    public function capturebalance() {
+        include "nav/myaccount/capturebalance_nav.php";
+    }
+    public function balancestatus() {
+        include "nav/myaccount/balancestatus_nav.php";
+    }
+    public function viewstatement() {
+        include "nav/myaccount/viewstatement_nav.php";
+    }
+    public function displaystatement() {
+        include "nav/myaccount/displaystatement_nav.php";
+    }public function selectstatement() {
+        include "nav/myaccount/selectstatement_nav.php";
+    }
+    public function changepin() {
+        include "nav/myaccount/changepin_nav.php";
+    }
+
+    /*
+     * This section is for managing all the page / flows for my airtime sales 
+     * * */
+
+    public function captureairtime() {
+        include "nav/floattransfer/captureairtime_nav.php";
+    }
+
+    public function airtimeconfirmation() {
+        include "nav/floattransfer/airtimeconfirmation_nav.php";
+    }
+
+    public function airtimestatus() {
+        include "nav/floattransfer/airtimestatus_nav.php";
     }
 
     public function sell_airtime() {
-        $back_url = 'home_page';
-        $home_url = 'home_page';
-        $this->load->model('app_list_model');
-
-        $this->bml_page->set_ttl(1);
-
-        $text = 'Sell Airtime';
-        $this->bml_page->set_homeurl($home_url);
-        $this->bml_page->set_backurl($back_url);
-        $this->bml_page->set_title('Sell Airtime');
-        $this->bml_page->set_view('sell_airtime');
-        $this->bml_page->set_data($text);
-
-        $this->load->view('bml/template', $this->bml_page);
-    }
-
-    public function my_account() {
-        $back_url = 'home_page/';
-        $home_url = 'home_page/';
-        $this->load->model('app_list_model');
-
-        $this->bml_page->set_ttl(1);
-
-        $text = 'My Account';
-        $this->bml_page->set_homeurl($home_url);
-        $this->bml_page->set_backurl($back_url);
-        $this->bml_page->set_title('My Account');
-        $this->bml_page->set_view('my_account');
-        $this->bml_page->set_data($text);
-
-        $this->load->view('bml/template', $this->bml_page);
+        include "nav/airtime/sellairtime_nav.php";
     }
 
     public function customers() {
-        $home_url = 'help_page/';
-        $back_url = 'help_page/';
-        $this->load->model('app_list_model');
-
-        $this->bml_page->set_ttl(1);
-
-        $text = 'Customers FAQ';
-
-        $this->bml_page->set_homeurl($home_url);
-        $this->bml_page->set_backurl($back_url);
-        $this->bml_page->set_title('Customers FAQ');
-        $this->bml_page->set_view('customers');
-        $this->bml_page->set_data($text);
-
-        $this->load->view('bml/template', $this->bml_page);
+        include "nav/help/customers_nav.php";
     }
 
     public function merchants() {
-        $home_url = 'help_page/';
-        $back_url = 'help_page/';
-        $this->load->model('app_list_model');
-
-        $this->bml_page->set_ttl(1);
-
-        $text = 'Merchants FAQ';
-        $this->bml_page->set_homeurl($home_url);
-        $this->bml_page->set_backurl($back_url);
-        $this->bml_page->set_title('Merchants FAQ');
-        $this->bml_page->set_view('merchants');
-        $this->bml_page->set_data($text);
-
-        $this->load->view('bml/template', $this->bml_page);
+        include "nav/help/merchants_nav.php";
     }
 
     public function agents() {
-        $home_url = 'help_page/';
-        $back_url = 'help_page/';
-        $this->load->model('app_list_model');
-
-        $this->bml_page->set_ttl(1);
-
-        $text = 'Agents FAQ';
-        $this->bml_page->set_homeurl($home_url);
-        $this->bml_page->set_backurl($back_url);
-        $this->bml_page->set_title('Agents FAQ');
-        $this->bml_page->set_view('agents');
-        $this->bml_page->set_data($text);
-
-        $this->load->view('bml/template', $this->bml_page);
+        include "nav/help/agents_nav.php";
     }
 
     public function mmoperators() {
@@ -250,152 +226,6 @@ class Nav extends CI_Controller {
 
         $app_list = $this->app_list_model->cookie_details();
         $this->bml_page->set_data($app_list);
-
-        $this->load->view('bml/template', $this->bml_page);
-    }
-
-    //images
-    public function new_image() {
-        $this->load->model('app_list_model');
-
-        $this->bml_page->set_title('Joe\'s Dev apps');
-        $this->bml_page->set_ttl(1);
-        $this->bml_page->set_view('new_image');
-        $sample_text = $this->app_list_model->get_text();
-        $this->bml_page->set_data($sample_text);
-
-        $this->load->view('bml/template', $this->bml_page);
-    }
-
-//Text manipulation
-    public function new_form() {
-        $params = array(
-            'name' => 'field1',
-            'value' => '',
-            'fullscreen' => 'false',
-            'hidevalue' => 'false',
-            'manditory' => 'true',
-            'predictivetext' => 'allow',
-            'mode' => 'phone',
-            'maxlength' => 100,
-        );
-
-        $this->bml_form->set_title('Sample form');
-        $this->bml_form->set_ttl(1);
-        $this->bml_form->set_action_url('http://swifta.co/binutraining/framework/index.php/nav/form_display');
-        $this->bml_form->add_field($params);
-
-        $this->load->view('bml/form_template', $this->bml_form);
-    }
-
-    public function form_display() {
-
-        // bml text submissions come in as GET params
-        $get_params = $this->input->get();
-
-        // the proxy numbers parameters starting from 1
-        $response = $get_params[1];
-
-
-        $this->bml_page->set_title('Forms Display');
-        $this->bml_page->set_ttl(1);
-        $this->bml_page->set_view('std_text');
-
-        $this->bml_page->set_data('Submitted "' . $response . '" at ' . time('c'));
-
-        $this->load->view('bml/template', $this->bml_page);
-    }
-
-    /**
-     * The Form test index page
-     */
-    public function ft_index() {
-
-        $this->load->model('app_list_model');
-
-        $this->bml_page->set_title('Joe\'s Dev apps');
-        $this->bml_page->set_ttl(1);
-        $this->bml_page->set_view('std_list');
-
-        $app_list = $this->app_list_model->get_ft_list();
-        $this->bml_page->set_data($app_list);
-
-        $this->load->view('bml/template', $this->bml_page);
-    }
-
-    /**
-     * A simple text page
-     */
-    public function text_page() {
-        $this->load->model('app_list_model');
-
-        $this->bml_page->set_title('Some text');
-        $this->bml_page->set_ttl(1);
-        $this->bml_page->set_view('std_text');
-
-        $text = $this->app_list_model->get_text();
-        $this->bml_page->set_data($text);
-
-        $this->load->view('bml/template', $this->bml_page);
-    }
-
-    /**
-     * A custom BML page
-     */
-    public function custom() {
-        $this->load->model('app_list_model');
-
-        $this->bml_page->set_title('Some text');
-        $this->bml_page->set_ttl(1);
-        $this->bml_page->set_view('custom');
-
-        $text = $this->app_list_model->get_custom();
-        $this->bml_page->set_data($text);
-
-        $this->load->view('bml/template', $this->bml_page);
-    }
-
-    /**
-     * simple page to handle user input
-     */
-    public function form_page($input_mode) {
-
-        $params = array(
-            'name' => 'field1',
-            'value' => '',
-            'fullscreen' => 'false',
-            'hidevalue' => 'false',
-            'manditory' => 'true',
-            'predictivetext' => 'allow',
-            'mode' => $input_mode,
-            'maxlength' => 100,
-        );
-
-        $this->bml_form->set_title('Sample form');
-        $this->bml_form->set_ttl(1);
-        $this->bml_form->set_action_url('/apps/dev_apps/index.php/nav/form_submit/');
-        $this->bml_form->add_field($params);
-
-        $this->load->view('bml/form_template', $this->bml_form);
-    }
-
-    /**
-     * handle the form submission
-     */
-    public function form_submit() {
-
-        // bml text submissions come in as GET params
-        $get_params = $this->input->get();
-
-        // the proxy numbers parameters starting from 1
-        $response = $get_params[1];
-
-
-        $this->bml_page->set_title('Form submission');
-        $this->bml_page->set_ttl(1);
-        $this->bml_page->set_view('std_text');
-
-        $this->bml_page->set_data('Submitted "' . $response . '" at ' . time('c'));
 
         $this->load->view('bml/template', $this->bml_page);
     }

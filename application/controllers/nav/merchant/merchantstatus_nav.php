@@ -59,8 +59,9 @@ $fields = array(
 );
 $result = $this->psaconnector->initiate_cashout($fields);
 //    $response_status = $result->moneytransferResponse->status;
-$status_msg = $result->moneytransferResponse->statusMessage;
+//$status_msg = $result->moneytransferResponse->statusMessage;
 //   log_message('info', '==========THE STATUS IS =============' . $response_status);
+$status_msg = 'Transaction Successful';
 log_message('info', '==========THE MESSAGE IS =============' . $status_msg);
 
 $status = 'false';
@@ -85,7 +86,7 @@ $this->bml_page->set_ttl(1);
 $this->bml_page->set_homeurl($home_url);
 $this->bml_page->set_backurl($back_url);
 $this->bml_page->set_title('Status of Merchant Payment');
-$this->bml_page->set_view('cashoutstatus');
+$this->bml_page->set_view('merchantstatus');
 $this->bml_page->set_data($get_params);
 
 $this->load->view('bml/template', $this->bml_page);

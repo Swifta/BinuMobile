@@ -21,11 +21,18 @@ $listline_height = 1;
 $nav_url = $this->config->item('nav_url');
 $optionid = '';
 $optionname = '';
+$dynamic_data = '';
 if (array_key_exists('1', $nextpage)) {
     $optionid = $nextpage[1];
 }
 if (array_key_exists('2', $nextpage)) {
     $optionname = $nextpage[2];
+}
+if (array_key_exists('3', $nextpage)) {
+    $dynamic_data = $nextpage[3];
+    log_message('info', 'THE DYNAMIC DATA WAS PASSED HERE');
+} else {
+    log_message('info', 'THERE IS NO DYNAMIC DATA');
 }
 log_message('info', 'THE OPTION AND THE OPTION NAME ARE ^^^^^^^^^^^^^^^^^*************########################' . $optionid . '<<<<>>>>>' . $optionname);
 $arguments = array('list_height' => $list_height,
@@ -39,7 +46,8 @@ $arguments = array('list_height' => $list_height,
     'button_width' => $button_width,
     'optionid' => $optionid,
     'optionname' => $optionname,
-    'next_page' => $nextpage[0]
+    'next_page' => $nextpage[0],
+    'dynamic_data' => $dynamic_data
 );
 
 echo

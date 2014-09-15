@@ -16,8 +16,8 @@ if (isset($_GET['mmoperatorname'])) {
 }
 if (isset($_GET['amount'])) {
     $amount = $_GET['amount'];
-}if (isset($_GET['pin'])) {
-    $subscriberpin = $_GET['pin'];
+}if (isset($_GET['1'])) {
+    $subscriberpin = $_GET['1'];
 }
 if (isset($_GET['reference'])) {
     $reference = $_GET['reference'];
@@ -48,22 +48,23 @@ $username = 'dupsy';
 $password = 'dupsy';
 log_message('debug', 'The new hardcoded login credentials are as follows::' . $username . ' \ ' . $password);
 $fields = array(
-    "receiver" => urlencode($refcode),
-    "amount" => urlencode($amount),
-    "mmo" => urlencode($mmoperatorid),
-    "reference" => urlencode($reference),
+    //  "receiver" => urlencode($refcode),
+    //  "amount" => urlencode($amount),
+    //  "mmo" => urlencode($mmoperatorid),
+    //  "reference" => urlencode($reference),
     "agentId" => urlencode($username),
     "agentPin" => urlencode($password),
     "teasypin" => urlencode($subscriberpin),
-    "transactionType" => urlencode('cashout'),
+    "transactionType" => urlencode('balance'),
 );
 $result = $this->psaconnector->initiate_cashout($fields);
 //    $response_status = $result->moneytransferResponse->status;
 //$status_msg = $result->moneytransferResponse->statusMessage;
-$status_msg = 'Transaction Successful';
+//$balance = $result->moneytransferResponse->balance;
 //   log_message('info', '==========THE STATUS IS =============' . $response_status);
+$status_msg = 'Transaction Successful';
 log_message('info', '==========THE MESSAGE IS =============' . $status_msg);
-
+$balance = 2500;
 $status = 'false';
 if ($status_msg == 'Transaction Successful') {
     $status = 'true';
@@ -72,9 +73,9 @@ if ($status_msg == 'Transaction Successful') {
 //     curl -v -X POST -k -H "Accept:application/json" -H "Authorization: Basic YWRtaW46YWRtaW4=" "http://54.164.96.105:8283/perform/moneytransfer?sender=0908723&receiver=2348076763191&amount=1500&mmo=pocketmoney&reference=dada&username=dupsy&password=dupsy&teasypin=7005&transactionType=cashin"
 array_push($get_params, $status);
 array_push($get_params, $status_msg);
-array_push($get_params, $amount);
-array_push($get_params, $mmoperatorname);
-array_push($get_params, $beneficiaryname);
+array_push($get_params, $balance);
+//array_push($get_params, $mmoperatorname);
+//array_push($get_params, $beneficiaryname);
 
 $back_url = 'home_page';
 $home_url = 'home_page';
@@ -82,10 +83,11 @@ $this->load->model('app_list_model');
 
 $this->bml_page->set_ttl(1);
 
+//$text = 'Cash In Status';
 $this->bml_page->set_homeurl($home_url);
 $this->bml_page->set_backurl($back_url);
-$this->bml_page->set_title('Status of Bill Payment');
-$this->bml_page->set_view('billstatus');
+$this->bml_page->set_title('Status of Balance');
+$this->bml_page->set_view('balancestatus');
 $this->bml_page->set_data($get_params);
 
 $this->load->view('bml/template', $this->bml_page);

@@ -1,18 +1,18 @@
 <?php
 
-/**
- * A basic page with a text
- */
+include("button_template.php");
 
-if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+function iterate_button_list($arguments) {
+    $button_names = array('Request Float', 'Return Float');
 
-$text = ! empty($data) ? $data : 'no text';
+    $destination_urls = array('capturefloat', 'capturefloat');
+    $generated_list = '';
 
-echo 
-'<pageSegment x="0" y="y" translate="y">
-  <panning>
-   <text x="' . $this->binu->indent . '" y="0" style="body_text" mode="wrap">' . htmlspecialchars($text) . '</text>
-  </panning>
-</pageSegment>
-';
+    foreach ($button_names as $button_name) {
+        $arguments['destination_url'] = $destination_urls[array_search($button_name, $button_names)];
+        $generated_list .= display_button($button_name, $arguments);
+    }
+    return $generated_list;
+}
 
+?>
