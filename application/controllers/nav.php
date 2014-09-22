@@ -177,6 +177,9 @@ class Nav extends CI_Controller {
     public function changepin() {
         include "nav/myaccount/changepin_nav.php";
     }
+    public function pinstatus() {
+        include "nav/myaccount/pinstatus_nav.php";
+    }
 
     /*
      * This section is for managing all the page / flows for my airtime sales 
