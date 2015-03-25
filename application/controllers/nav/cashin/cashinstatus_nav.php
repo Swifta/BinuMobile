@@ -55,9 +55,9 @@
             "teasypin" => urlencode($subscriberpin),
             "transactionType" => urlencode('cashin'),
         );
-        $result = $this->psaconnector->initiate_cashin($fields);
+        $result = $this->psaconnector->initiate_cashin($fields, $this->psaconnector->ipaddress);
         //   $response_status = $result->moneytransferResponse->status;
-        $status_msg = $result->moneytransferResponse->statusMessage;
+        $status_msg = $result->TransactionResponses->TransactionResponse->statusMessage;
         //   log_message('info', '==========THE STATUS IS =============' . $response_status);
         log_message('info', '==========THE MESSAGE IS =============' . $status_msg);
 
@@ -77,10 +77,10 @@
 
         $this->bml_page->set_ttl(1);
 
-        $text = 'Cash In Status';
+        $text = 'Deposit Status';
         $this->bml_page->set_homeurl($home_url);
         $this->bml_page->set_backurl($back_url);
-        $this->bml_page->set_title('Status of Cash In');
+        $this->bml_page->set_title('Status of Deposit');
         $this->bml_page->set_view('cashinstatus');
         $this->bml_page->set_data($get_params);
 

@@ -12,7 +12,7 @@
             'manditory' => 'true',
             'predictivetext' => 'allow',
             'mode' => 'text',
-            'maxlength' => 20,
+            'maxlength' => 10,
         );
 
 

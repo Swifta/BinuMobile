@@ -33,6 +33,10 @@ class Nav extends CI_Controller {
         include "nav/home/togglepassword_nav.php";
     }
 
+    function togglepswd() {
+        include "nav/home/togglepswd_nav.php";
+    }
+
     function logout() {
         include "nav/logout_nav.php";
     }
@@ -97,6 +101,19 @@ class Nav extends CI_Controller {
      * This section is for managing all the page / flows for merchant payment 
      * * */
 
+    public function verify_withdrawal() {
+        include "nav/verifywithdrawal/capturedetails_nav.php";
+    }
+
+    public function verifystatus() {
+        include "nav/verifywithdrawal/verifystatus_nav.php";
+    }
+
+  
+     /*
+     * This section is for managing all the page / flows for merchant payment 
+     * * */
+
     public function merchant_payment() {
         include "nav/merchant/merchantpayment_nav.php";
     }
@@ -149,6 +166,14 @@ class Nav extends CI_Controller {
         include "nav/floattransfer/floatconfirmation_nav.php";
     }
 
+    public function otpconfirmation() {
+        include "nav/floattransfer/otpconfirmation_nav.php";
+    }
+
+    public function optgenerator() {
+        include "nav/floattransfer/otpgenerator_nav.php";
+    }
+
     public function floatstatus() {
         include "nav/floattransfer/floatstatus_nav.php";
     }
@@ -160,23 +185,39 @@ class Nav extends CI_Controller {
     public function my_account() {
         include "nav/myaccount/myaccount_nav.php";
     }
+
     public function capturebalance() {
         include "nav/myaccount/capturebalance_nav.php";
     }
+
     public function balancestatus() {
         include "nav/myaccount/balancestatus_nav.php";
     }
+
     public function viewstatement() {
         include "nav/myaccount/viewstatement_nav.php";
     }
+
+    public function viewministatement() {
+        include "nav/myaccount/viewministatement_nav.php";
+    }
+
     public function displaystatement() {
         include "nav/myaccount/displaystatement_nav.php";
-    }public function selectstatement() {
+    }
+
+    public function selectstatement() {
         include "nav/myaccount/selectstatement_nav.php";
     }
+
+    public function ministatement() {
+        include "nav/myaccount/ministatement_nav.php";
+    }
+
     public function changepin() {
         include "nav/myaccount/changepin_nav.php";
     }
+
     public function pinstatus() {
         include "nav/myaccount/pinstatus_nav.php";
     }

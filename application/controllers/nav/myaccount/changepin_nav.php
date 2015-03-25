@@ -17,34 +17,34 @@ if (isset($_GET['backurl'])) {
     $back_url = $_GET['backurl'];
 }
 $get_params = !empty($get_params) ? $get_params : array('N/A');
-$params = array(array('name' => 'Old PIN',
+$params = array(array('name' => 'Old Password',
         'value' => '',
         'fullscreen' => 'false',
         'hidevalue' => 'true',
         'manditory' => 'true',
         'predictivetext' => 'allow',
-        'mode' => 'numeric',
-        'maxlength' => 5,
-        ),array('name' => 'New PIN',
+        'mode' => 'text',
+        'maxlength' => 10,
+        ),array('name' => 'New Password',
         'value' => '',
         'fullscreen' => 'false',
         'hidevalue' => 'true',
         'manditory' => 'true',
         'predictivetext' => 'allow',
-        'mode' => 'numeric',
-        'maxlength' => 5,
-        ),array('name' => 'Re-enter new PIN',
+        'mode' => 'text',
+        'maxlength' => 10,
+        ),array('name' => 'Re-enter new Password',
         'value' => '',
         'fullscreen' => 'false',
         'hidevalue' => 'true',
         'manditory' => 'true',
         'predictivetext' => 'allow',
-        'mode' => 'numeric',
-        'maxlength' => 5,
+        'mode' => 'text',
+        'maxlength' => 10,
         ));
 
 $this->bml_page->set_backurl($back_url);
-$this->bml_form->set_title('Change PIN');
+$this->bml_form->set_title('Change Password');
 $this->bml_form->set_ttl(1);
 $this->bml_form->set_action_url($this->config->item('nav_url') . 'pinstatus');
 foreach ($params as $fields) {

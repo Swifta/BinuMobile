@@ -17,12 +17,14 @@ if (isset($_GET['backurl'])) {
     $back_url = $_GET['backurl'];
 }
 if($mmoperatorid == 'readycash'){
-    $pin_text = 'Token or Voucher';
+    $pin_text = 'Token / Voucher';
 }else{
     $pin_text = 'Customer PIN';
 }
 $get_params = !empty($get_params) ? $get_params : array('N/A');
-$params = array(array('name' => 'Subscriber Number',
+log_message('info','---------------------------------THIS POINT IS THE CASHOUT CONFIRMATION CAPTURE PAGE');
+$params = array(array(
+        'name' => 'Subscriber Number(234)',
         'value' => '',
         'fullscreen' => 'false',
         'hidevalue' => 'false',
@@ -53,8 +55,8 @@ $params = array(array('name' => 'Subscriber Number',
         'manditory' => 'true',
         'predictivetext' => 'allow',
         'mode' => 'text',
-        'maxlength' => 20,));
-
+        'maxlength' => 20,
+        ));
 
 $this->bml_page->set_backurl($back_url);
 $this->bml_form->set_title('Withdrawal');

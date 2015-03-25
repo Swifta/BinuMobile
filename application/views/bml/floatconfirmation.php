@@ -13,28 +13,33 @@ function confirmation_page($arguments) {
     $errors = array_filter($get_params);
     $bullet_naira = html_entity_decode('&#x20A6;', ENT_COMPAT, 'UTF-8');
     $generated_page = '';
+    $backurl = "capturefloat";
     if (!empty($errors)) {
         // $ref_code = $get_params[0];
         $amount = $get_params[0];
-        $pin = $get_params[1];
+        $dealerId = $get_params[1];
+      //  $pin = $get_params[2];
+        $pin = "1112";
         $reference_info = $get_params[2];
-        //  $mmoperator = $get_params[4];
+
         //  $mmoperatorname = $get_params[5];
         $fees = '0';
         $total = intval($fees) + intval($amount);
+
+       
 
         log_message('info', 'There are components inside the said parameter......JOKE NOT!!!');
 
         $arguments['text'] = 'Amount : ' . $bullet_naira . ' ' . number_format($amount, 2, '.', ',') . '
     
-Fees : ' . $bullet_naira . ' ' . number_format($fees, 2, '.', ',') . '
+Dealer ID : ' . strtoupper($dealerId) . '
     
-Total : ' . $bullet_naira . ' ' . number_format($total, 2, '.', ',');
+Description : ' . $reference_info;
 
-        $arguments['cancel_url'] = 'cash_out/';
+        $arguments['cancel_url'] = 'capturefloat/';
+ //$amount = intval($amount) * 100;
 
-
-        $arguments['confirm_url'] = 'floatstatus?pin=' . urlencode($pin) . '&reference=' . urlencode($reference_info) . '&amount=' . urlencode($amount);
+        $arguments['confirm_url'] = 'optgenerator?pin=' . rawurlencode($pin) . '&reference=' . rawurlencode($reference_info) . '&amount=' . rawurlencode($amount) . '&dealerid=' . rawurlencode($dealerId) . '&backurl=' . rawurlencode($backurl);
 
 
 

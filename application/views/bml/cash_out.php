@@ -5,7 +5,8 @@ include("button_template.php");
 function iterate_button_list($arguments) {
     $button_names = array('Dealer Account', 'MATS Inflow Account', 'Token');
 
-    $destination_urls = array('mmoperators|capturecashout', 'mmoperators|capturecashout', 'mmoperators|capturecashout');
+  //  $destination_urls = array('mmoperators|capturecashout', 'mmoperators|capturecashout', 'mmoperators|capturecashout');
+     $destination_urls = array('mmoperators|capturecashout', 'inactive', 'inactive');
     $generated_list = '';
 
     foreach ($button_names as $button_name) {

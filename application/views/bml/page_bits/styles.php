@@ -84,6 +84,10 @@ echo <<<EOT
     <style name="buttons">
     <color value="#1E5175"/>
   </style>
+    <style name="buttons_gray">
+    <color value="#AEB5B4"/>
+  </style>
+    
     <style name="button_text">
     <color value="#FFFFFF"/>
   </style><style name="button_link">
@@ -100,7 +104,11 @@ echo <<<EOT
     <font face="Arial Unicode MS" size="$list_text"/>
     <color value="#1E5175"/>
   </style>
-            <style name="faq_text">
+  <style name="welcome_msg">
+    <font face="Arial Unicode MS" size="$list_text"/>
+    <color value="#5B3600"/>
+  </style>
+  <style name="faq_text">
     <font face="Arial Unicode MS" size="$list_text"/>
     <color value="#A8680A"/>
   </style>   

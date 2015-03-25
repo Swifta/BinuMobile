@@ -3,9 +3,10 @@
 include("button_template.php");
 
 function iterate_button_list($arguments) {
-    $button_names = array('Check Balance', 'View Statement','Change Pin');
-
-    $destination_urls = array('capturebalance', 'viewstatement|selectstatement','changepin');
+ //   $button_names = array('Check Balance', 'View Statement','Mini Statement','Change Password');
+$button_names = array('Mini Statement','Change Password');
+  //  $destination_urls = array('capturebalance', 'viewstatement|selectstatement','ministatement|displaystatement','changepin');
+$destination_urls = array('ministatement|displaystatement','changepin');
     $generated_list = '';
 
     foreach ($button_names as $button_name) {

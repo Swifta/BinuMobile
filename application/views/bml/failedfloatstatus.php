@@ -14,14 +14,13 @@ function status_page($arguments) {
     $bullet_naira = html_entity_decode('&#x20A6;', ENT_COMPAT, 'UTF-8');
     $generated_page = '';
     if (!empty($errors)) {
-        //  $status = $get_params[0];
-        //  $status_msg = $get_params[1];
-        $amount = $get_params[1];
-        //$amount = intval($amount) / 100;
-        // $mmoperatorname = $get_params[3];
+        //  $mmoperatorname = $get_params[3];
+  $status_msg = $get_params[0];
         log_message('info', 'There are components inside the said parameter......JOKE NOT!!!');
-        $text = 'Payment of ' . $bullet_naira . ' ' . number_format($amount, 2, '.', ',') . ' was successfully made and the ewallet credited';
-
+        $text = 'Transaction Failed.
+            An error has occured. Either your OTP does not match or that the OTP has expired. KIndly re initiate the transaction or contact the administrator
+                
+Reason : ' . $status_msg;
 
         $arguments['text'] = $text;
 
@@ -29,4 +28,5 @@ function status_page($arguments) {
     }
     return $generated_page;
 }
+
 ?>

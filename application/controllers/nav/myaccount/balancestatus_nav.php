@@ -59,7 +59,7 @@ $fields = array(
 );
 $result = $this->psaconnector->initiate_cashout($fields);
 //    $response_status = $result->moneytransferResponse->status;
-//$status_msg = $result->moneytransferResponse->statusMessage;
+//$status_msg = $result->TransactionResponses->TransactionResponse->statusMessage;
 //$balance = $result->moneytransferResponse->balance;
 //   log_message('info', '==========THE STATUS IS =============' . $response_status);
 $status_msg = 'Transaction Successful';

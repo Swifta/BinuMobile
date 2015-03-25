@@ -46,7 +46,7 @@ $params = array(array('name' => 'PIN',
         ));
 
 $this->bml_page->set_backurl($back_url);
-$this->bml_form->set_title('Balance Enquiry');
+$this->bml_form->set_title('View Statement');
 $this->bml_form->set_ttl(1);
 $this->bml_form->set_action_url($this->config->item('nav_url') . 'selectstatement?destination_url=displaystatement');
 foreach ($params as $fields) {

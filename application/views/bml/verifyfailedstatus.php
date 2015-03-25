@@ -14,14 +14,15 @@ function status_page($arguments) {
     $bullet_naira = html_entity_decode('&#x20A6;', ENT_COMPAT, 'UTF-8');
     $generated_page = '';
     if (!empty($errors)) {
-        //  $status = $get_params[0];
-        //  $status_msg = $get_params[1];
-        $amount = $get_params[1];
-        //$amount = intval($amount) / 100;
-        // $mmoperatorname = $get_params[3];
+        //  $mmoperatorname = $get_params[3];
+        $status_msg = $get_params[0];
+        $mmoname = $get_params[1];
+        $transactionid = $get_params[2];
         log_message('info', 'There are components inside the said parameter......JOKE NOT!!!');
-        $text = 'Payment of ' . $bullet_naira . ' ' . number_format($amount, 2, '.', ',') . ' was successfully made and the ewallet credited';
-
+        $text = 'Transaction Failed.
+            The transaction ID or Token (' . $transactionid . ') does not exist in the ' . $mmoname . ' database.
+        
+Reason : ' . $status_msg;
 
         $arguments['text'] = $text;
 
@@ -29,4 +30,5 @@ function status_page($arguments) {
     }
     return $generated_page;
 }
+
 ?>

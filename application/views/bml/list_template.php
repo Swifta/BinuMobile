@@ -22,6 +22,7 @@ $nav_url = $this->config->item('nav_url');
 $optionid = '';
 $optionname = '';
 $dynamic_data = '';
+$dynamic_datadetails = '';
 if (array_key_exists('1', $nextpage)) {
     $optionid = $nextpage[1];
 }
@@ -31,6 +32,9 @@ if (array_key_exists('2', $nextpage)) {
 if (array_key_exists('3', $nextpage)) {
     $dynamic_data = $nextpage[3];
     log_message('info', 'THE DYNAMIC DATA WAS PASSED HERE');
+}if (array_key_exists('4', $nextpage)) {
+    $dynamic_datadetails = $nextpage[4];
+    log_message('info', 'THE DYNAMIC DATA DETAILS WAS PASSED HERE');
 } else {
     log_message('info', 'THERE IS NO DYNAMIC DATA');
 }
@@ -47,7 +51,8 @@ $arguments = array('list_height' => $list_height,
     'optionid' => $optionid,
     'optionname' => $optionname,
     'next_page' => $nextpage[0],
-    'dynamic_data' => $dynamic_data
+    'dynamic_data' => $dynamic_data,
+    'dynamic_datadetails' => $dynamic_datadetails
 );
 
 echo
@@ -81,6 +86,11 @@ function display_button($button_name, $arguments, $misc_param) {
     } elseif (array_key_exists('others', $arguments)) {
         $next_destination_url = $arguments['next_destinationurl'];
         $destination_url = htmlspecialchars($nav_url . $next_page . '?optionid=' . urlencode($misc_param) . '&destination_url=' . $next_destination_url . '&optionname=' . urlencode($button_name) . '&backurl=' . urlencode($backurl));
+        $list_name = $button_name;
+    } elseif (array_key_exists('statement', $arguments)) {
+        $next_destination_url = $arguments['next_destinationurl'];
+      //   $destination_url = htmlspecialchars($nav_url . $next_page );
+        $destination_url = htmlspecialchars($nav_url . $next_page . '?details='.urlencode($misc_param) . '&destination_url=' . $next_destination_url  . '&backurl=' . urlencode($backurl));
         $list_name = $button_name;
     } else {
         $destination_url = htmlspecialchars($nav_url . 'faqanswers?title=' . urlencode($button_name) . '&answer=' . urlencode($misc_param) . '&backurl=' . urlencode($backurl));

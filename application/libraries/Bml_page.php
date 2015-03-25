@@ -13,6 +13,7 @@ class Bml_page {
     const DEFAULT_VIEW = 'view_not_set';
     const DEFAULT_BACKURL = 'index';
     const DEFAULT_HOMEURL = 'index';
+    const DEFAULT_FOOTER = 'Welcome MATS';
 
     // the ttl of this page
     public $ttl;
@@ -31,6 +32,7 @@ class Bml_page {
         // todo the meta object should be defined in a class
         $this->page_meta = new stdClass();
         $this->page_meta->title = !empty($params['title']) ? $params['title'] : self::DEFAULT_TITLE;
+        $this->page_meta->subtitle = !empty($params['subtitle']) ? $params['subtitle'] : self::DEFAULT_FOOTER;
         $this->page_meta->backurl = !empty($params['backurl']) ? $params['backurl'] : self::DEFAULT_BACKURL;
         $this->page_meta->homeurl = !empty($params['homeurl']) ? $params['homeurl'] : self::DEFAULT_HOMEURL;
     }
@@ -41,6 +43,14 @@ class Bml_page {
      */
     public function set_title($title) {
         $this->page_meta->title = $title;
+    }
+
+    /**
+     * Set the page title
+     * @param string $title The page title
+     */
+    public function set_subtitle($subtitle) {
+        $this->page_meta->subtitle = $subtitle;
     }
 
     /**

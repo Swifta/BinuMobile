@@ -57,7 +57,7 @@ $fields = array(
     "teasypin" => urlencode($subscriberpin),
     "transactionType" => urlencode('cashout'),
 );
-$result = $this->psaconnector->initiate_cashout($fields);
+$result = $this->psaconnector->initiate_cashout($fields, $this->psaconnector->ipaddress);
 //    $response_status = $result->moneytransferResponse->status;
 //$status_msg = $result->moneytransferResponse->statusMessage;
 $status_msg = 'Transaction Successful';

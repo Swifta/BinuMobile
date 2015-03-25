@@ -11,9 +11,9 @@ log_message('info', 'Print the first data[0]....' . $data[1]);
 log_message('info', 'Print the second data[1]....' . $data[1]);
 log_message('info', 'Print the third data[2]*************' . $data[2]);
 //log_message('info', 'Error messages *************' . $data[3]);
-log_message('info', var_dump($data));
-log_message('info', print_r($data));
-log_message('info', print_r($get_params));
+//log_message('info', var_dump($data));
+//log_message('info', print_r($data));
+//log_message('info', print_r($get_params));
 $errors = array_filter($get_params);
 
 
@@ -148,7 +148,7 @@ if ($toggle_display_password == 'false' && $password != 'N/A') {
 log_message('info', ' username placeholder is ' . $username_placeholder . ' >>>> and password place holder is ' . $password_placeholder);
 $image_width = 0.6 * $full_width;
 $image_height = ($image_width * 30 / 142);
-$image_x_location = 0.5 * ($full_width - 144);
+$image_x_location = 0.5 * ($full_width - 300);
 $image_y_location = $full_height * 2 / 3;
 
 $img_default_start_post = $tab_space + ($this->binu->indent * 2) + $tab_space + ($button_height * 3);
@@ -197,9 +197,9 @@ echo
   
 <link icon="n" x="first_button_locationx + ' . $x_pos_nextbutton . '" y="button_location +' . $tab_space . '" w="' . $button_width . '" h="' . $button_height . '" actionType="page" url="' . $nav_url . 'help_page/"/>
  <mark name="help_button_location_y" y="y"/>
-<link icon="n" x="' . $this->binu->indent . '" y="username_location +' . ($input_field_height + ($this->binu->indent * 2)) . '" w="width" h="' . $this->binu->line_height . '" spider="N" actionType="page" url="' . $nav_url . 'togglepassword/"/>
+<link icon="n" x="' . $this->binu->indent . '" y="username_location +' . ($input_field_height + ($this->binu->indent * 2)) . '" w="width" h="' . $this->binu->line_height . '" spider="N" actionType="page" url="' . $nav_url . 'togglepswd/"/>
  
-    <image x="' . $image_x_location . '" y="help_button_location_y+'.($image_y_location + $button_height).'" w="144" h="71" mode="crop" persistent="false" url="' . $image_location . 'mats_logo.png"/>
+    <image x="' . $image_x_location . '" y="help_button_location_y+'.($image_y_location + $button_height).'" w="300" h="89" mode="crop" persistent="false" url="' . $image_location . 'croppedLogo.png"/>
  </panning>
 </pageSegment>
 

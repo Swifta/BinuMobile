@@ -18,7 +18,7 @@
         }
         $get_params = !empty($get_params) ? $get_params : array('N/A');
         $params = array(array(
-                'name' => 'MSISDN / Wallet Number',
+                'name' => 'Subscriber MSISDN (234)',
                 'value' => '',
                 'fullscreen' => 'false',
                 'hidevalue' => 'false',
@@ -34,7 +34,7 @@
                 'predictivetext' => 'allow',
                 'mode' => 'numeric',
                 'maxlength' => 20,
-            ), array('name' => 'PIN',
+            ), array('name' => 'Customer PIN',
                 'value' => '',
                 'fullscreen' => 'false',
                 'hidevalue' => 'true',
@@ -52,7 +52,7 @@
                 'maxlength' => 20,));
 
         $this->bml_page->set_backurl($back_url);
-        $this->bml_form->set_title('Cash In');
+        $this->bml_form->set_title('Deposit');
         $this->bml_form->set_ttl(1);
         $this->bml_form->set_action_url($this->config->item('nav_url') . 'cashinconfirmation?mmoperatorid=' . urlencode($mmoperatorid) . '&mmoperatorname=' . urlencode($mmoperatorname));
         foreach ($params as $fields) {

@@ -3,8 +3,9 @@
 include("button_template.php");
 
 function iterate_button_list($arguments) {
-    $button_names = array('Cash In', 'Cash Out', 'Merchant Payment', 'Bill Payment', 'Float Transfer', 'Sell Airtime', 'My Account');
-    $destination_urls = array('mmoperators|cash_in', 'cash_out', 'merchant_payment|mmoperators', 'bill_payment|mmoperators', 'float_transfer', 'mmoperators', 'my_account');
+    $button_names = array('Withdrawal', 'Float Transfer','Verify Withdrawal','Deposit', 'Merchant Payment', 'Bill Payment',  'Sell Airtime', 'My Account');
+ //   $destination_urls = array('mmoperators|cash_in', 'cash_out', 'merchant_payment|mmoperators', 'bill_payment|mmoperators', 'float_transfer', 'mmoperators', 'my_account');
+    $destination_urls = array('cash_out', 'float_transfer','mmoperators', 'inactive','inactive', 'inactive',  'inactive', 'my_account');
     
     $generated_list = '';
 

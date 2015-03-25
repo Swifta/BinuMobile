@@ -48,11 +48,11 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
+$db['default']['hostname'] = 'gomintdb.caabwbnfnavv.us-east-1.rds.amazonaws.com';
 $db['default']['port'] = '3306';
-$db['default']['username'] = 'swiftaroot';
-$db['default']['password'] = 'swifta';
-$db['default']['database'] = 'matsapp';
+$db['default']['username'] = 'gomint';
+$db['default']['password'] = 'gomint';
+$db['default']['database'] = 'psadatasource';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = FALSE;

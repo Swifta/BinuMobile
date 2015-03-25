@@ -46,11 +46,19 @@ function display_button($button_name, $arguments) {
     $destination_url = $destination_url == '' ? $next_destination_url : $destination_url;
     log_message('info', 'The name of the button is ' . $button_name);
     // echo $button_name;
+    if($destination_url == 'inactive'){
+    $button_style = 'buttons_gray';
+    $link_url = '';
+    }
+    else{
+        $button_style = 'buttons';
+        $link_url = '<link icon="n" x="' . $line_height . '" y="username_location +' . $line_height . '" w="' . $button_width . '" h="' . $button_size . '" spider="N" actionType="page" url="' . $nav_url . $destination_url . '?destination_url=' . $next_destination_url . '/" style="button_link"/>     ';
+    }
+    
     $generated_button = '
         <mark name="username_location" y="y"/>
-        <rectangle radius="5" x="' . $line_height . '" y="username_location +' . ($line_height) . '" w="' . $button_width . '" h="' . $button_size . '" style="buttons" border="2">
-     </rectangle>     
-     <link icon="n" x="' . $line_height . '" y="username_location +' . $line_height . '" w="' . $button_width . '" h="' . $button_size . '" spider="N" actionType="page" url="' . $nav_url . $destination_url . '?destination_url=' . $next_destination_url . '/" style="button_link"/>
+        <rectangle radius="5" x="' . $line_height . '" y="username_location +' . ($line_height) . '" w="' . $button_width . '" h="' . $button_size . '" style="'.$button_style.'" border="2">
+     </rectangle>'.$link_url.'     
      <text align="center" w="width" x="0" y="username_location +' . ($tab_space) . '" style="body_text" mode="wrap">' . htmlspecialchars($button_name) . '</text>
 
 ';
